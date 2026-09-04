@@ -79,7 +79,8 @@ numeric_cols = ["amount", "device_age_days", "customer_account_age_days",
 for d in (legit, fraud):
     for col in numeric_cols:
         noise = np.random.normal(0, d[col].std() * 0.08, size=len(d))
-        d[col] = (d[col] + noise).clip(lower=0)
+        clip_lower = 50 if col == "amount" else 0
+        d[col] = (d[col] + noise).clip(lower=clip_lower)
 
 df = pd.concat([legit, fraud], ignore_index=True)
 df = df.sample(frac=1, random_state=42).reset_index(drop=True)

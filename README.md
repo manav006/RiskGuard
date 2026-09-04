@@ -37,24 +37,24 @@ Numbers from the final run on the held-out test set. The model is tuned for ~80%
 
 | Metric | Value |
 |--------|-------|
-| Precision | 0.6087 |
-| Recall | 0.80 |
-| F1 | 0.6914 |
-| AUC-ROC | 0.9361 |
+| Precision | 0.5949 |
+| Recall | 0.8057 |
+| F1 | 0.6845 |
+| AUC-ROC | 0.9376 |
 | AUC-PR | 0.6802 |
 | Decision threshold | 0.846 |
 | Test set size | 5,000 rows (175 fraud) |
 
-**Confusion matrix:** TN 4735 · FP 90 · FN 35 · TP 140
+**Confusion matrix:** TN 4729 · FP 96 · FN 34 · TP 141 (237 flagged transactions)
 
 **Cost analysis (INR)**
 
 | Item | Value |
 |------|-------|
-| False-positive friction cost (90 legit txns wrongly flagged @ ₹150 each) | ₹13,500 |
-| False-negative fraud loss (35 missed fraud × avg fraud amount) | ₹127,035 |
+| False-positive friction cost (96 legit txns wrongly flagged @ ₹150 each) | ₹14,400 |
+| False-negative fraud loss (34 missed fraud × avg fraud amount) | ₹123,405 |
 
-The honest takeaway: catching 140 of 175 fraud cases costs 90 wrongly-flagged legitimate transactions. That friction is why flagged transactions are **gated behind human review** (see below) instead of auto-contested.
+The honest takeaway: catching 141 of 175 fraud cases costs 96 wrongly-flagged legitimate transactions (237 total flagged, up from 230). That friction is why flagged transactions are **gated behind human review** (see below) instead of auto-contested.
 
 ---
 

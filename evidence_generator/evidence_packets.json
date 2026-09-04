@@ -1,117 +1,148 @@
 [
   {
+    "order_id": "order_016631",
+    "recommended_action": "auto_submit_defense",
+    "confidence_note": "High confidence due to fraud probability 0.8660 and true_positive outcome",
+    "evidence_summary": "The transaction shows multiple high-risk indicators: a high payment method risk score, a large amount relative to the customer's typical spend, and a device fingerprint mismatch. Additionally, the order was never shipped and the billing address did not match the cardholder's address, supporting a non\u2011authorized claim.",
+    "evidence_packet": {
+      "transaction_details": "Order ID order_016631, merchant merch_007, fraud probability 0.8660. Top risk factors: payment method risk score 0.6425 (increased), amount vs. usual spend 14.7715 (increased), device age 19.7450 (decreased). No prior successful orders.",
+      "delivery_evidence": "Delivery status is 'not_shipped' with no delivery confirmation ID, indicating the product was never dispatched to the customer.",
+      "identity_verification_evidence": "Customer IP 146.112.110.219 matches billing IP (billing_ip_match: true). Device fingerprint does not match (device_fingerprint_match: false). AVS check shows no match (avs_match: 'no_match').",
+      "customer_engagement_evidence": "No previous successful orders (previous_successful_orders_count: 0) and no customer communication logs recorded.",
+      "recommended_dispute_response": "We have substantial evidence that this transaction was not authorized by the cardholder. The order was never shipped, the device fingerprint does not match the cardholder\u2019s device, and the billing address failed AVS verification. Accordingly, we request the reversal of this charge and the reinstatement of the merchant\u2019s funds."
+    },
+    "evidence_fields": {
+      "order_id": "order_016631",
+      "merchant_id": "merch_007",
+      "actual_fraud": 1,
+      "predicted_fraud": 1,
+      "fraud_probability": 0.866,
+      "outcome": "true_positive",
+      "delivery_status": "not_shipped",
+      "delivery_confirmation_id": null,
+      "customer_ip_address": "146.112.110.219",
+      "billing_ip_match": true,
+      "device_fingerprint_match": false,
+      "customer_communication_log": [],
+      "previous_successful_orders_count": 0,
+      "avs_match": "no_match"
+    }
+  },
+  {
     "order_id": "order_000794",
     "recommended_action": "auto_submit_defense",
-    "confidence_note": "High confidence due to fraud probability of 0.9297, true_positive outcome, and multiple corroborating risk indicators.",
-    "evidence_summary": "The transaction was flagged by our fraud model with a 92.97% probability of fraud, showing high payment method risk and account age. Delivery was never completed, and key identity checks (IP, device fingerprint, AVS) all failed, supporting a non\u2011authentic purchase.",
+    "confidence_note": "High confidence due to 95% fraud probability, multiple risk factors, and lack of customer engagement.",
+    "evidence_summary": "The transaction shows high fraud risk with a 95% probability, mismatched device fingerprint, no AVS match, and no prior purchase history. Delivery was confirmed, but the billing information does not align with the transaction data. These factors strongly support a defense response.",
     "evidence_packet": {
-      "transaction_details": "Order placed with a fraud probability of 0.9297. Top risk factors: payment method risk score 0.6603 (contribution 1.8075), account age 13.5128 (contribution 0.6879). Transaction velocity was low, but overall model flagged the transaction as high risk.",
-      "delivery_evidence": "Delivery status is \"not_shipped\" with no delivery confirmation ID, indicating the item was never delivered to the customer.",
-      "identity_verification_evidence": "Billing IP address (146.112.110.219) does not match the account\u2019s typical IP, device fingerprint does not match, and AVS result is \"no_match\"\u2014all pointing to a fraudulent transaction.",
-      "customer_engagement_evidence": "Only two prior successful orders exist and there are no customer communication logs, suggesting minimal legitimate engagement with the merchant.",
-      "recommended_dispute_response": "We have evidence that the order was not delivered, the billing and shipping addresses do not match, the device fingerprint and IP address are inconsistent with the account, and the transaction was flagged by our fraud detection system. Therefore we request reversal of the charge and a full refund to the cardholder."
+      "transaction_details": "Order ID order_000794, Merchant ID merch_015, fraud probability 0.9509. Top risk reasons: payment method risk score 0.6603 (contribution 2.53), account age 13.5 (contribution 0.39), amount vs. usual spend 2.23 (contribution 0.32). No previous successful orders and no customer communication logs.",
+      "delivery_evidence": "Package was delivered as confirmed by UPS with tracking ID UPS-453197648544. Delivery status is 'delivered', indicating the merchant fulfilled the order.",
+      "identity_verification_evidence": "Billing IP matches the transaction IP (true), but device fingerprint does not match (false). AVS check shows no match, indicating billing address discrepancy. These inconsistencies raise strong identity verification concerns.",
+      "customer_engagement_evidence": "The customer has zero prior successful orders and no recorded support interactions, suggesting a new or potentially fraudulent account.",
+      "recommended_dispute_response": "Dear [Issuer], we have reviewed transaction order_000794 and determined it to be fraudulent. The order was delivered to the address provided, but the billing address does not match the shipping address, the device fingerprint is inconsistent, and the AVS check failed. Additionally, the customer has no prior purchase history with us. We request that this chargeback be upheld and the funds be returned to the issuer. Thank you for your assistance."
     },
     "evidence_fields": {
       "order_id": "order_000794",
       "merchant_id": "merch_015",
       "actual_fraud": 1,
       "predicted_fraud": 1,
-      "fraud_probability": 0.9297,
+      "fraud_probability": 0.9509,
       "outcome": "true_positive",
-      "delivery_status": "not_shipped",
-      "delivery_confirmation_id": null,
-      "customer_ip_address": "146.112.110.219",
-      "billing_ip_match": false,
+      "delivery_status": "delivered",
+      "delivery_confirmation_id": "UPS-453197648544",
+      "customer_ip_address": "51.23.141.226",
+      "billing_ip_match": true,
       "device_fingerprint_match": false,
       "customer_communication_log": [],
-      "previous_successful_orders_count": 2,
+      "previous_successful_orders_count": 0,
       "avs_match": "no_match"
     }
   },
   {
     "order_id": "order_019654",
     "recommended_action": "route_to_human_review",
-    "confidence_note": "High confidence that this is a legitimate transaction based on multiple corroborating evidence points.",
-    "evidence_summary": "The transaction was successfully delivered, the billing IP matched the customer\u2019s IP, and AVS returned a full match. Despite a high fraud probability score, the customer has a short account age and only two prior orders, indicating a new but legitimate customer.",
+    "confidence_note": "High confidence that the customer is legitimate based on delivery confirmation, IP match, and prior order history, despite the fraud model flag.",
+    "evidence_summary": "The transaction was flagged by the fraud model but the customer has a confirmed delivery, matching billing IP, and a prior successful order. Device fingerprint mismatch is offset by other strong indicators of legitimacy, warranting human review rather than automated defense.",
     "evidence_packet": {
-      "transaction_details": "Fraud probability 0.9586 with top risk reasons: payment method risk score 0.7441, amount vs. usual spend 7.0656, account age 16.5779. The model flagged this as a false positive, and the outcome is confirmed as legitimate.",
-      "delivery_evidence": "Order was delivered as confirmed by tracking ID TRK-976485442058, with delivery_status marked as \"delivered\".",
-      "identity_verification_evidence": "Customer IP address 15.219.211.71 matches the billing IP (billing_ip_match: true). Device fingerprint did not match (device_fingerprint_match: false), but AVS returned a full match (avs_match: \"full_match\"), supporting address validity.",
-      "customer_engagement_evidence": "The customer has placed 2 previous successful orders and there are no recorded customer communication logs, indicating a smooth prior experience.",
-      "recommended_dispute_response": "We respectfully request a manual review of this chargeback. The transaction was delivered (tracking ID TRK-976485442058), the billing IP matches the customer\u2019s IP, and AVS returned a full match. The customer has a short account history but has completed two prior orders successfully. Please consider this evidence before proceeding with the chargeback. Thank you for your attention to this matter."
+      "transaction_details": "Order 019654 shows a high fraud probability (0.9604) driven by payment method risk, higher-than-usual spend, and a relatively new account age. However, the model has been identified as a false positive for this case.",
+      "delivery_evidence": "The package is currently in transit with tracking ID TRK-677134405176, confirming that the merchant shipped the item and the customer should receive it.",
+      "identity_verification_evidence": "Billing IP matches the customer\u2019s IP (206.190.93.246) and AVS returned a partial match, indicating address consistency. Device fingerprint does not match, but this alone is insufficient to negate legitimacy.",
+      "customer_engagement_evidence": "The customer has one prior successful order and has actively requested an invoice copy, demonstrating engagement and intent. This history supports the legitimacy of the current transaction.",
+      "recommended_dispute_response": "We respectfully request a human review of this chargeback. The customer is legitimate, the item was shipped and is in transit, and we have supporting evidence of delivery and prior successful transactions. Please reverse the chargeback and restore the funds to the merchant."
     },
     "evidence_fields": {
       "order_id": "order_019654",
       "merchant_id": "merch_018",
       "actual_fraud": 0,
       "predicted_fraud": 1,
-      "fraud_probability": 0.9586,
+      "fraud_probability": 0.9604,
       "outcome": "false_positive",
-      "delivery_status": "delivered",
-      "delivery_confirmation_id": "TRK-976485442058",
-      "customer_ip_address": "15.219.211.71",
+      "delivery_status": "in_transit",
+      "delivery_confirmation_id": "TRK-677134405176",
+      "customer_ip_address": "206.190.93.246",
       "billing_ip_match": true,
       "device_fingerprint_match": false,
-      "customer_communication_log": [],
-      "previous_successful_orders_count": 2,
-      "avs_match": "full_match"
+      "customer_communication_log": [
+        "Customer requested invoice copy; sent via email."
+      ],
+      "previous_successful_orders_count": 1,
+      "avs_match": "partial_match"
     }
   },
   {
     "order_id": "order_000601",
-    "recommended_action": "accept_chargeback",
-    "confidence_note": "High confidence due to 96.7% fraud probability, multiple risk factors, and strong evidence of non\u2011match IP, device fingerprint, and AVS, combined with a single prior order and a customer dispute.",
-    "evidence_summary": "The transaction shows a high fraud probability with key risk indicators such as mismatched billing IP, device fingerprint, and AVS, and only one prior successful order. Delivery was confirmed, but the lack of identity verification and the customer\u2019s claim of unfamiliarity with the merchant strongly support a chargeback.",
+    "recommended_action": "auto_submit_defense",
+    "confidence_note": "High confidence due to fraud probability 0.9594 and true_positive outcome, combined with multiple risk indicators and mismatched identity data.",
+    "evidence_summary": "The transaction shows high risk scores across payment method, spend deviation, and velocity, and identity verification fails (IP, device, AVS). Despite a delivery in transit, the customer\u2019s prior orders and the lack of IP/device match strongly support fraud.",
     "evidence_packet": {
-      "transaction_details": "Order placed with a 96.7% fraud probability. Top risk reasons: payment method risk score (0.68), account age (18.19 days), and amount vs. usual spend (6.32).",
-      "delivery_evidence": "Item was delivered and confirmed by FDX-517697394393, indicating the merchant fulfilled the shipment.",
-      "identity_verification_evidence": "Billing IP (18.120.203.49) does not match the customer\u2019s IP, device fingerprint mismatch, and AVS returned no match, all pointing to a likely fraudulent account.",
-      "customer_engagement_evidence": "Only one prior successful order exists. The customer disputed the charge, claiming unfamiliarity with the merchant, with no prior support interactions indicating legitimate use.",
-      "recommended_dispute_response": "We respectfully request that the chargeback be upheld. The transaction was authorized by a high\u2011risk account with mismatched billing information, no device or IP verification, and the customer has no prior history of legitimate purchases. The merchant fulfilled the order, but the evidence indicates this was a fraudulent transaction. Please accept the chargeback and refund the customer."
+      "transaction_details": "Fraud probability 0.9594; top risk reasons: payment method score 0.6817, spend deviation 6.3203, velocity 3.0000. All contribute to increased risk.",
+      "delivery_evidence": "Order shipped (delivery_status: in_transit) with tracking ID TRK-186703784883, indicating legitimate shipment but not yet delivered, which is typical for legitimate orders.",
+      "identity_verification_evidence": "Customer IP 201.73.61.174 does not match billing IP (billing_ip_match: false). Device fingerprint also mismatched, and AVS shows no match, indicating potential card\u2011present fraud.",
+      "customer_engagement_evidence": "Customer has 2 prior successful orders, yet disputes this charge claiming unfamiliarity. The communication log indicates a single dispute statement, with no prior complaints or returns.",
+      "recommended_dispute_response": "We respectfully request reversal of the chargeback. The transaction was authorized by the cardholder, the order was shipped with valid tracking, and the cardholder\u2019s address did not match the billing address. Additionally, the customer has a history of successful orders with us. Therefore, we believe the chargeback is unwarranted and request its dismissal."
     },
     "evidence_fields": {
       "order_id": "order_000601",
       "merchant_id": "merch_011",
       "actual_fraud": 1,
       "predicted_fraud": 1,
-      "fraud_probability": 0.9672,
+      "fraud_probability": 0.9594,
       "outcome": "true_positive",
-      "delivery_status": "delivered",
-      "delivery_confirmation_id": "FDX-517697394393",
-      "customer_ip_address": "18.120.203.49",
+      "delivery_status": "in_transit",
+      "delivery_confirmation_id": "TRK-186703784883",
+      "customer_ip_address": "201.73.61.174",
       "billing_ip_match": false,
       "device_fingerprint_match": false,
       "customer_communication_log": [
         "Customer disputed charge; stated unfamiliarity with merchant."
       ],
-      "previous_successful_orders_count": 1,
+      "previous_successful_orders_count": 2,
       "avs_match": "no_match"
     }
   },
   {
     "order_id": "order_011179",
     "recommended_action": "auto_submit_defense",
-    "confidence_note": "High confidence due to 0.9559 fraud probability, true_positive outcome, and multiple risk indicators.",
-    "evidence_summary": "The transaction shows a high fraud probability with significant risk factors, no prior successful orders, and a failed AVS check. Delivery was never completed, and the cardholder was not present at the address. These points strongly support a defense against the chargeback.",
+    "confidence_note": "High confidence due to fraud probability 0.9530, multiple risk indicators, and lack of delivery or customer engagement evidence.",
+    "evidence_summary": "The transaction exhibits a high fraud probability with no shipment, mismatched AVS, device fingerprint mismatch, and no prior orders, strongly indicating a fraudulent charge. The risk model highlights payment method risk, transaction velocity, and account age as key contributors.",
     "evidence_packet": {
-      "transaction_details": "Fraud probability 0.9559; top risk reasons: payment method risk score 0.6691, transaction velocity 4.0 in the last hour, account age 4.3592. No previous successful orders and AVS no match.",
-      "delivery_evidence": "Order status is \"in_transit\" with FDX confirmation ID FDX-784883822661; no delivery confirmation or receipt by the cardholder.",
-      "identity_verification_evidence": "Customer IP matches billing IP and device fingerprint matches, but AVS failed, indicating address mismatch. IP and device consistency alone are insufficient to confirm legitimacy.",
-      "customer_engagement_evidence": "Zero prior successful orders and an empty customer communication log suggest no established relationship or dispute history.",
-      "recommended_dispute_response": "We have substantial evidence indicating this transaction was fraudulent: the cardholder was not present, the billing address did not match the shipping address (AVS no match), and the package was never delivered. Accordingly, we request that the chargeback be reversed and the funds returned to our account."
+      "transaction_details": "Order placed with payment method risk score 0.6691, transaction velocity of 4 in the last hour, and account age of 4.3592. Fraud probability is 0.9530 and the model flagged it as a true positive.",
+      "delivery_evidence": "Order status is not shipped and there is no delivery confirmation ID, confirming that goods were never delivered to the customer.",
+      "identity_verification_evidence": "Billing IP matches the customer IP, but the device fingerprint does not match the customer's known device and the AVS check shows no match, raising suspicion of a fraudulent transaction.",
+      "customer_engagement_evidence": "There are zero previous successful orders and no customer communication logs, indicating no established relationship with the merchant.",
+      "recommended_dispute_response": "We have evidence that the order was never shipped, the billing address did not match the shipping address, and the device used does not match the customer's known device. Therefore, we request reversal of the charge."
     },
     "evidence_fields": {
       "order_id": "order_011179",
       "merchant_id": "merch_010",
       "actual_fraud": 1,
       "predicted_fraud": 1,
-      "fraud_probability": 0.9559,
+      "fraud_probability": 0.953,
       "outcome": "true_positive",
-      "delivery_status": "in_transit",
-      "delivery_confirmation_id": "FDX-784883822661",
-      "customer_ip_address": "186.51.206.2",
+      "delivery_status": "not_shipped",
+      "delivery_confirmation_id": null,
+      "customer_ip_address": "176.9.35.63",
       "billing_ip_match": true,
-      "device_fingerprint_match": true,
+      "device_fingerprint_match": false,
       "customer_communication_log": [],
       "previous_successful_orders_count": 0,
       "avs_match": "no_match"
@@ -119,62 +150,34 @@
   },
   {
     "order_id": "order_006494",
-    "recommended_action": "route_to_human_review",
-    "confidence_note": "High confidence that the customer is legitimate based on delivery confirmation and customer communication, despite the fraud model flag.",
-    "evidence_summary": "The transaction was delivered (tracking ID TRK-121466485075) and the customer requested and received an invoice copy. Although the fraud model flagged the transaction, there is no prior order history and the customer\u2019s communication confirms receipt.",
-    "evidence_packet": {
-      "transaction_details": "Order flagged with a fraud probability of 0.9831; top risk reasons were payment method risk score (0.5400), device age (13.4249), and account age (5.1010). The outcome was identified as a false positive.",
-      "delivery_evidence": "Delivery status is \"delivered\" with a valid tracking ID (TRK-121466485075). No delivery issues were reported.",
-      "identity_verification_evidence": "Customer IP (142.144.141.24) does not match billing IP and device fingerprint does not match, but AVS returned a partial match. These factors contributed to the fraud score but do not negate the legitimacy of the transaction.",
-      "customer_engagement_evidence": "No previous successful orders, but the customer proactively requested an invoice copy and received it. This indicates active engagement and intent to receive the product.",
-      "recommended_dispute_response": "We respectfully request a review of this chargeback. The transaction was delivered, the customer confirmed receipt, and an invoice was provided upon request. Given the evidence, we believe the chargeback is unwarranted and ask that it be reversed."
-    },
-    "evidence_fields": {
-      "order_id": "order_006494",
-      "merchant_id": "merch_019",
-      "actual_fraud": 0,
-      "predicted_fraud": 1,
-      "fraud_probability": 0.9831,
-      "outcome": "false_positive",
-      "delivery_status": "delivered",
-      "delivery_confirmation_id": "TRK-121466485075",
-      "customer_ip_address": "142.144.141.24",
-      "billing_ip_match": false,
-      "device_fingerprint_match": false,
-      "customer_communication_log": [
-        "Customer requested invoice copy; sent via email."
-      ],
-      "previous_successful_orders_count": 0,
-      "avs_match": "partial_match"
-    }
+    "error": "JSON parse failed",
+    "raw": "{\n  \"order_id\": \"order_006494\",\n  \"recommended_action\": \"route_to_human_review\",\n  \"confidence_note\": \"High confidence that the customer is legitimate; fraud model flagged due to high risk scores but delivery and customer engagement evidence strongly support authenticity.\",\n  \"evidence_summary\": \"The order was successfully delivered with tracking confirmation, the customer actively requested delivery status and invoice, and there is no prior order history. Despite high fraud scores, the lack of device fingerprint match and IP mismatch do not invalidate the transaction.\",\n  \"evidence_packet\": {\n    \"transaction_details\": \"Order placed by customer with ID order_006494, fraud probability 0.9760. Risk factors include payment method risk score 0.54, device age 13.42, and transaction velocity 4.0. However, outcome flagged as false_positive.\",\n    \"delivery_evidence\": \"Delivery status is 'delivered' with confirmation ID TRK-057360349224, confirming the package reached the customer\u2019s address.\",\n    \"identity_verification_evidence\": \"Customer IP 222.218.8.60 does not match billing IP, and device fingerprint does not match, but AVS shows partial match, indicating address was partially verified. These discrepancies are common in legitimate transactions and do not conclusively prove fraud.\",\n    \"customer_engagement_evidence\": \"Customer contacted support to inquire about delivery status and requested an invoice, demonstrating active engagement. No prior successful orders exist, but the communication indicates a legitimate purchase.\",\n    \"recommended_dispute_response\": \"We respectfully request that the chargeback be reversed. The order was delivered ("
   },
   {
     "order_id": "order_002003",
-    "recommended_action": "accept_chargeback",
-    "confidence_note": "High confidence due to 0.9886 fraud probability, multiple elevated risk factors, and lack of supporting evidence for the transaction.",
-    "evidence_summary": "The transaction exhibits a high fraud probability with significant risk contributions from payment method, device age, and spend deviation. Delivery is still in transit with no confirmation, and all identity verification checks failed, supporting the claim of fraud.",
+    "recommended_action": "auto_submit_defense",
+    "confidence_note": "High confidence due to fraud probability >0.97, device fingerprint mismatch, AVS no match, and no prior successful orders.",
+    "evidence_summary": "The transaction shows multiple high\u2011risk indicators: a device fingerprint mismatch, no IP or AVS match, and no prior successful orders. Delivery is still in transit, and the fraud probability is extremely high, supporting a defense submission.",
     "evidence_packet": {
-      "transaction_details": "Order placed with a payment method scoring 0.9550, device age 6.8104, and spend deviation 7.0137, all contributing to a high fraud risk profile (total contribution >3).",
-      "delivery_evidence": "Shipment status is 'in_transit' with UPS tracking ID UPS-082924615579; no delivery confirmation or receipt has been provided, indicating the item was not received by the customer.",
-      "identity_verification_evidence": "Customer IP 149.104.104.107 does not match billing IP (billing_ip_match=false), device fingerprint is not recognized (device_fingerprint_match=false), and AVS check returned 'no_match', all pointing to a mismatch between the transaction and the customer's known identity.",
-      "customer_engagement_evidence": "The customer has no prior successful orders (previous_successful_orders_count=0) and only a single dispute communication stating unfamiliarity with the merchant, suggesting no established relationship or prior legitimate activity.",
-      "recommended_dispute_response": "We respectfully request that the chargeback be accepted. The transaction exhibits multiple high-risk indicators, no delivery confirmation, and fails all identity verification checks. The customer has no prior history with the merchant and has not provided any evidence of legitimate receipt of goods or services."
+      "transaction_details": "Transaction flagged with fraud probability 0.9793. Top risk reasons: payment method risk score 0.9550, device age 6.8104, amount vs. usual spend 7.0137. No prior successful orders.",
+      "delivery_evidence": "Delivery status is 'in_transit' with DHL confirmation ID DHL-831301077647. No delivery confirmation received yet, indicating the item may not have reached the customer.",
+      "identity_verification_evidence": "Customer IP 36.230.128.239 matches billing IP (billing_ip_match true), but device fingerprint does not match known customer fingerprint. AVS result shows no match, raising suspicion of address mismatch.",
+      "customer_engagement_evidence": "No prior successful orders (previous_successful_orders_count 0). No customer communication logs. Lack of engagement suggests a new, potentially fraudulent account.",
+      "recommended_dispute_response": "We respectfully request that the chargeback be denied. The transaction was authorized by a customer who did not receive the product, as delivery is still in transit. The device fingerprint does not match the customer's known device, and the AVS check failed. The fraud probability is 97.93%, and the transaction exhibits multiple high-risk indicators. Please refer to the attached evidence for further details."
     },
     "evidence_fields": {
       "order_id": "order_002003",
       "merchant_id": "merch_005",
       "actual_fraud": 1,
       "predicted_fraud": 1,
-      "fraud_probability": 0.9886,
+      "fraud_probability": 0.9793,
       "outcome": "true_positive",
       "delivery_status": "in_transit",
-      "delivery_confirmation_id": "UPS-082924615579",
-      "customer_ip_address": "149.104.104.107",
-      "billing_ip_match": false,
+      "delivery_confirmation_id": "DHL-831301077647",
+      "customer_ip_address": "36.230.128.239",
+      "billing_ip_match": true,
       "device_fingerprint_match": false,
-      "customer_communication_log": [
-        "Customer disputed charge; stated unfamiliarity with merchant."
-      ],
+      "customer_communication_log": [],
       "previous_successful_orders_count": 0,
       "avs_match": "no_match"
     }
@@ -182,85 +185,87 @@
   {
     "order_id": "order_011861",
     "recommended_action": "auto_submit_defense",
-    "confidence_note": "High confidence due to 0.9339 fraud probability and multiple corroborating risk indicators",
-    "evidence_summary": "The transaction exhibits a high fraud probability with mismatched billing IP, failed AVS, and a high payment method risk score. Delivery remains in transit and no customer communication has been logged, reinforcing the defense.",
+    "confidence_note": "High confidence due to 91.8% fraud probability and multiple risk indicators.",
+    "evidence_summary": "The transaction shows a high fraud probability with a risky payment method, unusually high spend, and a device age that slightly lowers risk but overall risk remains high. Delivery is still in transit and AVS failed, while prior order history is nonexistent, indicating a likely fraudulent activity.",
     "evidence_packet": {
-      "transaction_details": "Order placed with a payment method scoring 0.6070 on risk, amount 4.7259 times higher than the customer\u2019s usual spend, and device age contributing negatively; overall fraud probability 93.39%.",
-      "delivery_evidence": "Shipment is still in transit (UPS-591464413236) and has not been delivered, so the goods were not received by the customer yet.",
-      "identity_verification_evidence": "Billing IP does not match the customer IP (141.155.92.244), AVS check failed, but device fingerprint matches, indicating a possible device reuse but overall IP mismatch raises suspicion.",
-      "customer_engagement_evidence": "Only one prior successful order and no customer communication logs, suggesting limited legitimate interaction with the merchant.",
-      "recommended_dispute_response": "We have substantial evidence indicating that this transaction was unauthorized. The billing address does not match the shipping address, the IP address used for the transaction does not match the billing IP, and the AVS check failed. Additionally, the payment method has a high risk score and the transaction amount is significantly higher than the customer\u2019s usual spend. The order was placed using a device fingerprint that matches a previous transaction, but the overall risk profile and lack of customer engagement strongly suggest fraud. We request the reversal of the chargeback and the reinstatement of the transaction."
+      "transaction_details": "Order placed with a payment method scoring 0.6070, spend anomaly of 4.7259, and device age of 24.4228 days. The ML model flagged the transaction as a true positive fraud with a combined risk score exceeding typical thresholds.",
+      "delivery_evidence": "The shipment is currently in transit (tracking ID TRK-903139394642) and has not yet been delivered or confirmed, leaving the transaction unresolved and increasing the likelihood of a fraudulent claim.",
+      "identity_verification_evidence": "Customer IP (171.248.67.198) matches billing IP and device fingerprint, but the AVS check failed, suggesting a mismatch in shipping address details and raising suspicion of address spoofing.",
+      "customer_engagement_evidence": "No prior successful orders and no customer communication logs are present, indicating no established relationship or dispute history with the merchant.",
+      "recommended_dispute_response": "We request the chargeback be denied. The transaction was authorized with a valid payment method, the device and IP matched the billing information, and the shipment is still in transit. The AVS mismatch alone is insufficient to prove fraud, and the merchant has no prior order history to support the claim. Please consider the evidence and deny the chargeback."
     },
     "evidence_fields": {
       "order_id": "order_011861",
       "merchant_id": "merch_007",
       "actual_fraud": 1,
       "predicted_fraud": 1,
-      "fraud_probability": 0.9339,
+      "fraud_probability": 0.9177,
       "outcome": "true_positive",
       "delivery_status": "in_transit",
-      "delivery_confirmation_id": "UPS-591464413236",
-      "customer_ip_address": "141.155.92.244",
-      "billing_ip_match": false,
+      "delivery_confirmation_id": "TRK-903139394642",
+      "customer_ip_address": "171.248.67.198",
+      "billing_ip_match": true,
       "device_fingerprint_match": true,
       "customer_communication_log": [],
-      "previous_successful_orders_count": 1,
+      "previous_successful_orders_count": 0,
       "avs_match": "no_match"
     }
   },
   {
     "order_id": "order_007619",
-    "recommended_action": "auto_submit_defense",
-    "confidence_note": "Very high confidence\u2014fraud probability 94.55% and multiple high\u2011risk indicators confirm a likely fraudulent transaction.",
-    "evidence_summary": "The order was never shipped and the device fingerprint does not match the cardholder\u2019s device. Combined with a high payment\u2011method risk score and a device\u2011fingerprint mismatch, the evidence strongly supports a fraud defense.",
+    "recommended_action": "accept_chargeback",
+    "confidence_note": "High confidence due to 95% fraud probability and multiple risk factors identified by the model.",
+    "evidence_summary": "The transaction exhibits a very high fraud probability with significant risk indicators, the shipment is still in transit with no delivery confirmation, and the AVS mismatch suggests billing address inconsistency. Only one prior order and a customer dispute claiming unfamiliarity with the merchant further support a fraudulent claim.",
     "evidence_packet": {
-      "transaction_details": "Risk score 0.9455 driven by payment\u2011method risk (0.7461), high velocity (3.0 in last hour), and a lower than usual spend amount. The model flagged this as a true positive fraud.",
-      "delivery_evidence": "Delivery status is \"not_shipped\" with no delivery confirmation ID. The merchant failed to ship the product, providing clear evidence of non\u2011delivery.",
-      "identity_verification_evidence": "Customer IP 20.66.183.201 matches the billing IP (billing_ip_match: true). However, the device fingerprint does not match (device_fingerprint_match: false) and AVS returned a partial match, indicating potential spoofing.",
-      "customer_engagement_evidence": "Only one prior successful order and no customer communication logs. Lack of engagement or dispute from the cardholder further supports fraud.",
-      "recommended_dispute_response": "\"We are disputing the chargeback for order_007619. The transaction was not authorized by the cardholder, the merchant did not ship the product, and the device fingerprint does not match the cardholder\u2019s device. We request reversal of the chargeback and restoration of the funds. Please let us know if you require any additional documentation.\""
+      "transaction_details": "Order placed by customer with ID order_007619 for merchant merch_006. Fraud probability is 0.9510. Top risk reasons include a payment method risk score of 0.7461, transaction velocity of 3 orders in the last hour, and an account age of 15.1 days, all contributing to a high risk assessment.",
+      "delivery_evidence": "Delivery status is \"in_transit\" with confirmation ID FDX-273855148074. No evidence of delivery or receipt has been provided, and the shipment remains pending, which is inconsistent with a completed legitimate purchase.",
+      "identity_verification_evidence": "Customer IP 161.169.110.79 matches the billing IP (billing_ip_match true) and the device fingerprint matches (device_fingerprint_match true). However, the AVS result is \"no_match\", indicating a billing address mismatch that raises suspicion.",
+      "customer_engagement_evidence": "The customer has only one previous successful order and has disputed the charge, stating unfamiliarity with the merchant. No prior support interactions confirm the transaction, and the dispute message suggests a lack of recognition of the merchant.",
+      "recommended_dispute_response": "We acknowledge receipt of your dispute. Our records indicate that the order was placed on [date] and is currently in transit with carrier FDX (tracking ID FDX-273855148074). The billing address used does not match the address on file, and we have no record of prior successful transactions with this customer. Please provide additional proof of purchase or contact our support team to resolve this matter. If no further evidence is provided, we will proceed with the chargeback as per the dispute."
     },
     "evidence_fields": {
       "order_id": "order_007619",
       "merchant_id": "merch_006",
       "actual_fraud": 1,
       "predicted_fraud": 1,
-      "fraud_probability": 0.9455,
+      "fraud_probability": 0.951,
       "outcome": "true_positive",
-      "delivery_status": "not_shipped",
-      "delivery_confirmation_id": null,
-      "customer_ip_address": "20.66.183.201",
+      "delivery_status": "in_transit",
+      "delivery_confirmation_id": "FDX-273855148074",
+      "customer_ip_address": "161.169.110.79",
       "billing_ip_match": true,
-      "device_fingerprint_match": false,
-      "customer_communication_log": [],
+      "device_fingerprint_match": true,
+      "customer_communication_log": [
+        "Customer disputed charge; stated unfamiliarity with merchant."
+      ],
       "previous_successful_orders_count": 1,
-      "avs_match": "partial_match"
+      "avs_match": "no_match"
     }
   },
   {
     "order_id": "order_007109",
     "recommended_action": "auto_submit_defense",
-    "confidence_note": "High confidence: fraud probability 0.9628, multiple risk factors, and lack of delivery confirmation strongly indicate a fraudulent transaction.",
-    "evidence_summary": "The transaction exhibits a high fraud probability with key risk indicators such as a high payment method risk score, abnormal spend amount, and a very young account. Delivery was never completed and AVS failed, while no prior orders exist, confirming the likelihood of a fraudulent charge.",
+    "confidence_note": "High confidence due to fraud probability 0.96, true positive outcome, and multiple elevated risk indicators.",
+    "evidence_summary": "The transaction exhibits a high fraud probability with key risk factors such as a high payment method risk score, unusual amount relative to the customer's typical spend, and a newly created account. Delivery remains in transit with no confirmation, device fingerprint mismatch, and AVS failure, while there are no prior orders or customer communications.",
     "evidence_packet": {
-      "transaction_details": "Order placed with a newly created account (age 1.36), payment method risk score 0.86, and spend amount 5.84 times the customer\u2019s usual spend. Fraud probability is 0.9628 and the model flagged it as a true positive.",
-      "delivery_evidence": "The merchant reports the item was not shipped; no delivery confirmation ID is available, indicating the goods were never delivered to the customer.",
-      "identity_verification_evidence": "Billing IP matches the customer\u2019s IP and the device fingerprint matches, but the AVS check failed (no match), suggesting a mismatch between billing and shipping addresses.",
-      "customer_engagement_evidence": "No previous successful orders exist for this account and there are no customer communication logs, indicating no prior engagement or dispute history.",
-      "recommended_dispute_response": "We respectfully request that the chargeback be denied. The transaction was not fulfilled (no shipment), the AVS check failed, and the customer has no prior purchase history with us. The evidence provided demonstrates that this was a fraudulent transaction and not a legitimate purchase."
+      "transaction_details": "Transaction flagged as true positive with fraud probability 0.9606. Top risk reasons: payment method risk score 0.8605 (contribution 1.9478), amount vs. usual spend 5.8416 (contribution 0.6825), and account age 1.3591 (contribution 0.2943). All contributions increased risk.",
+      "delivery_evidence": "Order status is 'in_transit' with confirmation ID FDX-161157129954. No delivery confirmation has been received to date, indicating potential delay or non-delivery.",
+      "identity_verification_evidence": "Customer IP address 78.156.151.75 matches the billing IP, but the device fingerprint does not match the customer's profile and the AVS check returned 'no_match', suggesting possible synthetic or stolen credentials.",
+      "customer_engagement_evidence": "No previous successful orders (count 0) and an empty customer communication log indicate no established customer relationship or prior dispute history.",
+      "recommended_dispute_response": "We have identified this transaction as fraudulent. The order was placed using a device fingerprint that does not match the customer's profile, the AVS check failed, and the payment method risk score is exceptionally high. The delivery is still in transit and no confirmation has been received. We request reversal of the charge and provision of the delivery confirmation ID FDX-161157129954."
     },
     "evidence_fields": {
       "order_id": "order_007109",
       "merchant_id": "merch_005",
       "actual_fraud": 1,
       "predicted_fraud": 1,
-      "fraud_probability": 0.9628,
+      "fraud_probability": 0.9606,
       "outcome": "true_positive",
-      "delivery_status": "not_shipped",
-      "delivery_confirmation_id": null,
-      "customer_ip_address": "101.140.45.118",
+      "delivery_status": "in_transit",
+      "delivery_confirmation_id": "FDX-161157129954",
+      "customer_ip_address": "78.156.151.75",
       "billing_ip_match": true,
-      "device_fingerprint_match": true,
+      "device_fingerprint_match": false,
       "customer_communication_log": [],
       "previous_successful_orders_count": 0,
       "avs_match": "no_match"
@@ -268,57 +273,59 @@
   },
   {
     "order_id": "order_000655",
-    "recommended_action": "accept_chargeback",
-    "confidence_note": "High confidence\u2014fraud probability 0.9867, multiple risk factors, no delivery evidence, and mismatched identity data.",
-    "evidence_summary": "The transaction shows a high fraud probability with no delivery, no prior orders, and mismatched IP and device fingerprint data. AVS partially matched and billing IP did not align, supporting a fraudulent claim.",
+    "recommended_action": "auto_submit_defense",
+    "confidence_note": "High confidence due to 97.58% fraud probability and multiple corroborating risk indicators.",
+    "evidence_summary": "The transaction originates from a new account with a high payment method risk score, no prior successful orders, and a delivery still in transit despite a tracking ID. The customer claims non-receipt, AVS does not match, and the overall profile strongly suggests fraud.",
     "evidence_packet": {
-      "transaction_details": "Order placed with a high payment method risk score (0.7374) and significant device (6.1938) and account age (8.8986) contributions, totaling a strong fraud signal. The ML model flagged the transaction as a true positive for fraud.",
-      "delivery_evidence": "Delivery status is marked as \"not_shipped\" with no delivery confirmation ID, indicating the merchant never dispatched the goods. This absence of shipment contradicts the chargeback claim of non-receipt.",
-      "identity_verification_evidence": "The customer\u2019s IP address (192.160.21.193) does not match the billing IP, and the device fingerprint fails to match the merchant\u2019s records. AVS returned a partial match, further weakening the legitimacy of the transaction.",
-      "customer_engagement_evidence": "There are zero previous successful orders from this customer and no recorded customer communication logs. The lack of prior engagement and support interactions suggests a new, potentially fraudulent account.",
-      "recommended_dispute_response": "We respectfully request that the chargeback be upheld. The transaction exhibits no evidence of delivery, lacks prior successful orders, and shows clear mismatches in IP, device fingerprint, and AVS data. Accordingly, we have no record of fulfillment or customer receipt of goods, supporting the fraud claim."
+      "transaction_details": "Order placed by a new account (account age 8.9 days) using a payment method with a risk score of 0.7374 and a device age of 6.2 days. Fraud probability is 97.58% and the top risk reasons are payment method, device age, and account age.",
+      "delivery_evidence": "Tracking ID TRK-491554829355 shows the package is still in transit; no delivery confirmation has been received, and the customer reports non-receipt, indicating a potential delivery failure or misdelivery.",
+      "identity_verification_evidence": "Customer IP 190.112.72.6 matches the billing IP and the device fingerprint, but the AVS result shows no match, suggesting an address mismatch. This combination of matching IP/device but AVS mismatch points to a possible synthetic or stolen identity.",
+      "customer_engagement_evidence": "There are zero prior successful orders and only one support interaction where the customer claimed non-receipt. The absence of purchase history and limited engagement support a high likelihood of fraud.",
+      "recommended_dispute_response": "We have evidence that the order was placed by a new account with a high-risk payment method, the delivery remains in transit, and the customer has not received the item. The AVS mismatch and lack of prior orders support a fraud claim. Please reject the chargeback and provide the tracking ID and AVS details as evidence."
     },
     "evidence_fields": {
       "order_id": "order_000655",
       "merchant_id": "merch_013",
       "actual_fraud": 1,
       "predicted_fraud": 1,
-      "fraud_probability": 0.9867,
+      "fraud_probability": 0.9758,
       "outcome": "true_positive",
-      "delivery_status": "not_shipped",
-      "delivery_confirmation_id": null,
-      "customer_ip_address": "192.160.21.193",
-      "billing_ip_match": false,
-      "device_fingerprint_match": false,
-      "customer_communication_log": [],
+      "delivery_status": "in_transit",
+      "delivery_confirmation_id": "TRK-491554829355",
+      "customer_ip_address": "190.112.72.6",
+      "billing_ip_match": true,
+      "device_fingerprint_match": true,
+      "customer_communication_log": [
+        "Customer claimed non-receipt of order; investigation pending."
+      ],
       "previous_successful_orders_count": 0,
-      "avs_match": "partial_match"
+      "avs_match": "no_match"
     }
   },
   {
     "order_id": "order_002100",
     "recommended_action": "auto_submit_defense",
-    "confidence_note": "High confidence due to fraud probability >0.97 and multiple risk indicators.",
-    "evidence_summary": "The transaction shows a high fraud probability with no delivery, mismatched IP and device fingerprint, and no prior successful orders. AVS and billing IP mismatches further support the risk. These factors strongly indicate a fraudulent charge.",
+    "confidence_note": "High confidence due to fraud probability 0.9727, true_positive outcome, and multiple risk indicators.",
+    "evidence_summary": "The transaction shows a high fraud probability with significant risk factors, no prior successful orders, and mismatched billing information. Delivery is still in transit and the billing address does not match, supporting a non\u2011authorized claim.",
     "evidence_packet": {
-      "transaction_details": "Order 002100 was placed with merchant 013. Fraud probability 0.9733, top risk reasons: payment method risk score 0.6557, device age 6.07, amount vs. usual spend 4.61. All contributions increased risk.",
-      "delivery_evidence": "Delivery status is 'not_shipped' with no delivery confirmation ID, indicating the merchant never shipped the goods.",
-      "identity_verification_evidence": "Billing IP does not match customer IP (93.203.43.77) and device fingerprint does not match, AVS result shows no match, suggesting the transaction was not authorized by the cardholder.",
-      "customer_engagement_evidence": "No previous successful orders and no customer communication logs, implying no established relationship or support interaction.",
-      "recommended_dispute_response": "We have evidence that the order was never shipped, the billing and device information do not match the cardholder, and the transaction exhibits multiple high-risk indicators. Therefore, we request that the chargeback be reversed and the funds returned to the merchant."
+      "transaction_details": "Order 002100 was processed with a fraud probability of 0.9727. The top risk reasons were a high payment method risk score (0.6557), device age (6.0718), and amount exceeding the customer\u2019s usual spend (4.6149). No previous successful orders were recorded.",
+      "delivery_evidence": "The package is listed as \"in_transit\" with DHL confirmation ID DHL-267797316992. No delivery receipt or signature is available, indicating the item has not yet reached the customer.",
+      "identity_verification_evidence": "The billing IP (53.9.36.141) does not match the customer\u2019s typical IP, and the AVS check returned \"no_match\" for the billing address. However, the device fingerprint matches, suggesting the device used may be legitimate but the transaction details are inconsistent.",
+      "customer_engagement_evidence": "There are no prior successful orders and the customer communication log is empty, implying no prior interaction or dispute resolution.",
+      "recommended_dispute_response": "We request that the chargeback be upheld. The transaction was not authorized by the cardholder, as evidenced by the mismatched billing address, lack of delivery confirmation, and absence of prior successful orders. The delivery remains in transit and the billing IP does not match the customer\u2019s typical location. Therefore, we request reversal of the disputed amount."
     },
     "evidence_fields": {
       "order_id": "order_002100",
       "merchant_id": "merch_013",
       "actual_fraud": 1,
       "predicted_fraud": 1,
-      "fraud_probability": 0.9733,
+      "fraud_probability": 0.9727,
       "outcome": "true_positive",
-      "delivery_status": "not_shipped",
-      "delivery_confirmation_id": null,
-      "customer_ip_address": "93.203.43.77",
+      "delivery_status": "in_transit",
+      "delivery_confirmation_id": "DHL-267797316992",
+      "customer_ip_address": "53.9.36.141",
       "billing_ip_match": false,
-      "device_fingerprint_match": false,
+      "device_fingerprint_match": true,
       "customer_communication_log": [],
       "previous_successful_orders_count": 0,
       "avs_match": "no_match"
@@ -327,25 +334,25 @@
   {
     "order_id": "order_016918",
     "recommended_action": "auto_submit_defense",
-    "confidence_note": "High confidence due to 95% fraud probability, elevated risk scores, lack of prior orders, AVS mismatch, and delivery still in transit.",
-    "evidence_summary": "The transaction shows multiple red flags: a high payment\u2011method risk score, an old device, no prior successful orders, and an AVS mismatch. Delivery remains in transit and the order was never received, supporting a fraudulent claim.",
+    "confidence_note": "High confidence due to fraud probability of 0.9630, true positive flag, and multiple elevated risk factors.",
+    "evidence_summary": "The transaction shows a high fraud probability with significant risk scores for payment method, device age, and velocity. Delivery was initiated but not completed, and the billing address failed AVS, while the customer has no prior successful orders or communication.",
     "evidence_packet": {
-      "transaction_details": "Order_016918 for merchant_007 exhibited a payment\u2011method risk score of 0.8739 and a device age of 7.3690, both contributing to a high overall fraud probability (0.9526). The amount was lower than the customer\u2019s typical spend, but this alone does not mitigate the other risk factors.",
-      "delivery_evidence": "The shipment status is 'in_transit' with UPS tracking ID UPS-470024644915, indicating the package has not yet been delivered or signed for. No delivery confirmation or receipt is available.",
-      "identity_verification_evidence": "The customer\u2019s IP address (121.121.206.68) matches the billing IP, and the device fingerprint is consistent, yet the AVS check returned 'no_match', suggesting the billing address does not align with the cardholder\u2019s address.",
-      "customer_engagement_evidence": "There are zero previous successful orders and no customer communication logs, implying the cardholder has no established relationship or prior verification with the merchant.",
-      "recommended_dispute_response": "We request reversal of this transaction. The cardholder\u2019s address did not match the billing address, the order was never delivered, and the transaction exhibits high fraud indicators. Please reverse the charge and provide any additional information required to complete the dispute."
+      "transaction_details": "Order order_016918 from merchant merch_007 was processed with a fraud probability of 0.9630 and flagged as a true positive. The top risk contributors were payment method risk (0.8739), device age (7.3690), and transaction velocity (3.0000).",
+      "delivery_evidence": "The package was shipped via FDX with confirmation ID FDX-592991150249 and is currently listed as \"in_transit\". No delivery confirmation or receipt has been recorded, indicating the item has not yet reached the customer.",
+      "identity_verification_evidence": "The customer\u2019s IP address (222.38.228.24) matches the billing IP, and the device fingerprint matches the merchant\u2019s records. However, the AVS check returned \"no_match\", showing a discrepancy between the billing and shipping addresses.",
+      "customer_engagement_evidence": "There are zero previous successful orders for this customer and no customer communication logs are available, suggesting a lack of established trust or verification.",
+      "recommended_dispute_response": "We respectfully request that the chargeback be reversed. The transaction was flagged as high risk with a fraud probability of 0.9630, and the customer\u2019s payment method, device age, and transaction velocity all contributed to this assessment. While the shipment is still in transit, the billing address did not match the shipping address (AVS no match) and the customer has no prior successful orders or communication with us. These factors collectively support the conclusion that the chargeback is unwarranted."
     },
     "evidence_fields": {
       "order_id": "order_016918",
       "merchant_id": "merch_007",
       "actual_fraud": 1,
       "predicted_fraud": 1,
-      "fraud_probability": 0.9526,
+      "fraud_probability": 0.963,
       "outcome": "true_positive",
       "delivery_status": "in_transit",
-      "delivery_confirmation_id": "UPS-470024644915",
-      "customer_ip_address": "121.121.206.68",
+      "delivery_confirmation_id": "FDX-592991150249",
+      "customer_ip_address": "222.38.228.24",
       "billing_ip_match": true,
       "device_fingerprint_match": true,
       "customer_communication_log": [],
@@ -356,90 +363,61 @@
   {
     "order_id": "order_014346",
     "recommended_action": "auto_submit_defense",
-    "confidence_note": "Very high confidence: fraud probability 94.1% with multiple top risk factors and no delivery confirmation.",
-    "evidence_summary": "The transaction was flagged as high risk by the ML model, with a high payment method risk score and old device age. Delivery status shows the order was never shipped and no confirmation ID exists. IP and AVS mismatches further support fraud.",
+    "confidence_note": "High confidence due to fraud probability 0.9653, device fingerprint mismatch, no shipment, and no prior orders.",
+    "evidence_summary": "The transaction shows a high fraud probability, device fingerprint mismatch, no shipment, and no prior successful orders, indicating a likely fraudulent charge.",
     "evidence_packet": {
-      "transaction_details": "Order amount $923.97, payment method risk score 0.5445, device age 12.6672 months. The ML model\u2019s top risk reasons increased risk, while the transaction amount slightly decreased it. Overall risk remains high.",
-      "delivery_evidence": "Delivery status is \"not_shipped\" and delivery_confirmation_id is null, indicating no shipment or delivery confirmation was ever generated.",
-      "identity_verification_evidence": "Customer IP 122.35.77.141 does not match the billing IP (billing_ip_match: false). AVS check failed (avs_match: \"no_match\"), though the device fingerprint matched (device_fingerprint_match: true). The mismatch of IP and AVS strongly suggests a fraudulent transaction.",
-      "customer_engagement_evidence": "No previous successful orders (previous_successful_orders_count: 0) and an empty customer communication log, indicating no established customer relationship or dispute history.",
-      "recommended_dispute_response": "We have substantial evidence that the order was never shipped, the billing address did not match the delivery address, and the transaction was flagged as high risk by our fraud detection system. Accordingly, we request that the chargeback be reversed and the funds be returned to our account."
+      "transaction_details": "Transaction flagged with fraud probability 0.9653. Risk reasons: payment method score 0.5445, device age 12.6672, amount higher than usual spend 2.6417. All contributions increased risk.",
+      "delivery_evidence": "Order status 'not_shipped', no delivery confirmation ID, suggesting the goods were never dispatched.",
+      "identity_verification_evidence": "Billing IP matches customer IP, but device fingerprint does not match known device, and AVS returned partial match, raising suspicion.",
+      "customer_engagement_evidence": "No previous successful orders and no customer communication logs, indicating lack of established relationship.",
+      "recommended_dispute_response": "We have evidence that the order was never shipped, the device used does not match the customer's known device, and the transaction exhibits high fraud indicators. Therefore we request reversal of the charge."
     },
     "evidence_fields": {
       "order_id": "order_014346",
       "merchant_id": "merch_017",
       "actual_fraud": 1,
       "predicted_fraud": 1,
-      "fraud_probability": 0.941,
+      "fraud_probability": 0.9653,
       "outcome": "true_positive",
       "delivery_status": "not_shipped",
       "delivery_confirmation_id": null,
-      "customer_ip_address": "122.35.77.141",
-      "billing_ip_match": false,
-      "device_fingerprint_match": true,
+      "customer_ip_address": "167.105.95.226",
+      "billing_ip_match": true,
+      "device_fingerprint_match": false,
       "customer_communication_log": [],
       "previous_successful_orders_count": 0,
-      "avs_match": "no_match"
+      "avs_match": "partial_match"
     }
   },
   {
     "order_id": "order_013584",
     "recommended_action": "route_to_human_review",
-    "confidence_note": "High confidence in legitimacy due to multiple corroborating evidence points (delivery confirmation, IP match, AVS match, prior orders, customer confirmation) outweighing the fraud model score.",
-    "evidence_summary": "The customer has confirmed receipt of the shipment, has a history of two successful orders, and the billing and shipping IP addresses match. Delivery is in transit with a valid confirmation ID, and AVS results show a full match. Device fingerprint mismatch is mitigated by the new device age and overall strong identity signals.",
+    "confidence_note": "High confidence due to multiple supporting evidence indicating a legitimate customer, despite the fraud model flag.",
+    "evidence_summary": "The customer has a history of successful orders, confirmed receipt, and IP matches billing IP, while device fingerprint mismatch is not critical; delivery is in transit with tracking ID. These factors strongly support legitimacy.",
     "evidence_packet": {
-      "transaction_details": "Fraud model flagged the transaction with a probability of 0.9001, citing high payment method risk, unusual spend amount, and new device age. However, the model has been identified as a false positive for this case, and the merchant has requested a human review.",
-      "delivery_evidence": "The shipment status is 'in_transit' with confirmation ID SHP-169922015533, indicating that the package has been dispatched and is on its way to the customer. No delivery issues have been reported.",
-      "identity_verification_evidence": "The customer's billing IP matches the shipping IP (true), AVS returned a full match, and the device fingerprint does not match previous records but the device age is 0, suggesting a new but legitimate device. These factors support the customer's identity.",
-      "customer_engagement_evidence": "The customer has placed two prior successful orders with this merchant and has communicated directly confirming receipt of the current order with no complaints. This engagement history reinforces the legitimacy of the transaction.",
-      "recommended_dispute_response": "Dear Chargeback Team,\n\nWe have thoroughly reviewed the evidence for order_013584 and confirm that the customer is legitimate. The shipment is in transit with a valid confirmation ID, the billing and shipping IP addresses match, AVS returned a full match, and the customer has confirmed receipt. Additionally, the customer has a history of two successful orders with us.\n\nGiven these facts, we respectfully request that the chargeback be reversed. Please find attached the delivery confirmation and customer communication logs.\n\nThank you for your consideration.\n\nSincerely,\n[Merchant Name]"
+      "transaction_details": "Transaction flagged by fraud model with high risk scores (payment method 0.9497, spend 3.3745, time 23:00). However, overall risk profile is mitigated by strong evidence of legitimate activity.",
+      "delivery_evidence": "Order is in transit with tracking ID TRK-817135780123; customer confirmed receipt, indicating successful delivery.",
+      "identity_verification_evidence": "Billing IP matches customer IP, AVS partially matched, device fingerprint mismatch but not decisive; overall identity verification supports legitimacy.",
+      "customer_engagement_evidence": "Customer has 2 prior successful orders and has communicated confirming receipt with no issues.",
+      "recommended_dispute_response": "We respectfully request a review of this chargeback as the transaction was authorized by a legitimate customer, with confirmed delivery and prior successful interactions. Please consider the evidence provided and reverse the chargeback."
     },
     "evidence_fields": {
       "order_id": "order_013584",
       "merchant_id": "merch_008",
       "actual_fraud": 0,
       "predicted_fraud": 1,
-      "fraud_probability": 0.9001,
+      "fraud_probability": 0.8966,
       "outcome": "false_positive",
       "delivery_status": "in_transit",
-      "delivery_confirmation_id": "SHP-169922015533",
-      "customer_ip_address": "186.117.206.245",
+      "delivery_confirmation_id": "TRK-817135780123",
+      "customer_ip_address": "223.199.82.247",
       "billing_ip_match": true,
       "device_fingerprint_match": false,
       "customer_communication_log": [
         "Customer confirmed receipt of order; no issues reported."
       ],
       "previous_successful_orders_count": 2,
-      "avs_match": "full_match"
-    }
-  },
-  {
-    "order_id": "order_010762",
-    "recommended_action": "accept_chargeback",
-    "confidence_note": "High confidence due to fraud probability 0.9893, lack of delivery, no prior orders, and AVS mismatch.",
-    "evidence_summary": "The transaction shows no delivery, no prior successful orders, and a mismatch in AVS, indicating a high likelihood of fraud. Device fingerprint and IP match do not mitigate the risk given the other red flags.",
-    "evidence_packet": {
-      "transaction_details": "Order placed with a high fraud probability (0.9893) and true positive flag. Risk factors include a high payment method risk score (0.7356), transaction amount flagged as increased, and a device age of 6.6760 contributing to risk.",
-      "delivery_evidence": "The order was never shipped and lacks a delivery confirmation ID, confirming that the product was not delivered to the customer.",
-      "identity_verification_evidence": "Customer IP address matches billing IP and device fingerprint, but AVS results show a no_match, indicating address mismatch. These inconsistencies raise suspicion of a fraudulent transaction.",
-      "customer_engagement_evidence": "There are zero previous successful orders and no customer communication logs, suggesting no established relationship or prior verification.",
-      "recommended_dispute_response": "We respectfully request that the chargeback be upheld. The transaction was never delivered, the billing address did not match the shipping address, and there is no prior purchase history or customer interaction to support the claim. Therefore, we believe the chargeback is justified and request a full refund to the cardholder."
-    },
-    "evidence_fields": {
-      "order_id": "order_010762",
-      "merchant_id": "merch_014",
-      "actual_fraud": 1,
-      "predicted_fraud": 1,
-      "fraud_probability": 0.9893,
-      "outcome": "true_positive",
-      "delivery_status": "not_shipped",
-      "delivery_confirmation_id": null,
-      "customer_ip_address": "34.228.23.191",
-      "billing_ip_match": true,
-      "device_fingerprint_match": true,
-      "customer_communication_log": [],
-      "previous_successful_orders_count": 0,
-      "avs_match": "no_match"
+      "avs_match": "partial_match"
     }
   }
 ]

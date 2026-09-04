@@ -7,3 +7,9 @@
 [33m[nodemon] watching path(s): *.*[39m
 [33m[nodemon] watching extensions: js,mjs,cjs,json[39m
 [32m[nodemon] starting `node server.js`[39m
+Loaded 20000 raw transactions
+Loaded 5000 test predictions
+Loaded 230 flagged explanations
+Loaded 230 evidence records
+Loaded 15 evidence packets
+Razorpay risk-manager backend listening on http://localhost:8001
